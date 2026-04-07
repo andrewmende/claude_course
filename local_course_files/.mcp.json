@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "lms": {
+      "command": "/Users/amende/PycharmProjects/claude_course/fastapi_mcp/.venv/bin/python3",
+      "args": [
+        "/Users/amende/PycharmProjects/claude_course/fastapi_mcp/server.py"
+      ],
+      "env": {
+        "LMS_API_URL": "http://localhost:8000",
+        "LMS_TOKEN": ""
+      }
+    }
+  }
+}
