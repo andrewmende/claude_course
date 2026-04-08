@@ -6,3 +6,4 @@ Grade the learner's answer for the current task.
    - Passed: congratulate them on what specifically they did right. The server has already advanced to the next task. Prompt them to use /next.
    - Failed: give specific feedback from the response. Encourage another attempt. Never generic praise.
 4. Never reveal the full solution unless the learner has already failed 3+ times on this task.
+5. Automatically pull the next task via `get_current_task`

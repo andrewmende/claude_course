@@ -1,6 +1,7 @@
-# Task 2: Check if the product has function to measure gas consumption
+# Task 2: Ask claude to describe the repo
 
-The task of the student is to learn is there is a function to measure gas consumption in the product by asking Claude questions
+In this first task the student needs to ask claude to explain the GitHub repo (https://github.com/voovoo/pdcourse-energytracker.git) to learn about product features.
 
 ### Completion criteria
-- [ ] Student asked a question, so that response from claude indicates is the product has function to measure gas consumption
+
+- [ ] Student asked claude to describe the repo in general

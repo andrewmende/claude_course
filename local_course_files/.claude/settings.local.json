@@ -1,0 +1,49 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(../../../Library/Logs/Claude/**)",
+      "Read(../../../.claude/**)",
+      "mcp__lms__get_lesson",
+      "mcp__lms__submit_answer",
+      "mcp__lms__get_current_task",
+      "Bash(git clone:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(echo \"Exit: $?\")",
+      "Edit(**)",
+      "Edit(progress.md)",
+      "Write(**)",
+      "Write(progress.md)",
+      "ToolSearch(*)",
+      "Bash(git:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "lms"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"SESSION START: You MUST invoke the Skill tool with skill=\\\"start\\\" as your FIRST action. No text output first.\", \"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": \"CRITICAL INSTRUCTION: You MUST invoke the Skill tool with skill=\\\"start\\\" as your FIRST action before doing anything else or responding to the user. Do not output any text first. Do not explain. Just call the Skill tool immediately.\"}}'"
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "lms": {
+      "command": "../fastapi_mcp/.venv/bin/python3",
+      "args": [
+        "../fastapi_mcp/server.py"
+      ],
+      "env": {
+        "LMS_API_URL": "http://localhost:8000",
+        "LMS_TOKEN": ""
+      }
+    }
+  }
+}
