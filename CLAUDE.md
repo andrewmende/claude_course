@@ -2,44 +2,28 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## MCP Server
+## LMS Server (external)
 
-`fastapi_mcp/server.py` is a unified service: FastAPI REST routes and FastMCP tools in one file, sharing in-memory LMS data directly (no HTTP round-trip between layers). It replaces both `lms_mock/` and the old Node.js server.
+The MCP server lives at `/Users/amende/PycharmProjects/lms_server/` — it is a separate project, not part of this repo.
 
-### Running
+Start it before opening a course session:
 
 ```bash
-cd fastapi_mcp
+cd /Users/amende/PycharmProjects/lms_server
 pip install -r requirements.txt
-
-# stdio mode — used by Claude Code (registered in .claude/settings.local.json):
 python server.py
-
-# HTTP mode — exposes the REST API on :8000:
-python server.py --http
-# or: uvicorn server:app --reload
 ```
 
-### Architecture
+It runs on `http://localhost:8000`. Claude connects via streamable-http at `/mcp`; REST endpoints are at `/api/*`.
 
-Core logic lives in plain functions (`_get_task`, `_submit_answer`, etc.). Both layers call them directly:
+## MCP connection
 
-| Layer | How |
-|---|---|
-| FastAPI routes | `@app.get/post/patch` — raises `HTTPException` on error |
-| FastMCP tools | `@mcp.tool()` — returns `{"error": "..."}` on error |
-
-| Tool / Route | Method | Path |
-|---|---|---|
-| `get_task(task_id)` | GET | `/api/tasks/:task_id` |
-| `submit_answer(task_id, learner_id, answer)` | POST | `/api/submissions` |
-| `get_progress(learner_id)` | GET | `/api/progress/:learner_id` |
-| `update_progress(learner_id, task_id, status)` | PATCH | `/api/progress/:learner_id` |
-
-To add a tool: add a `_logic_fn` and decorate it with both `@app.<method>` and `@mcp.tool()`.
+`local_course_files/.mcp.json` points Claude at `http://localhost:8000/mcp` (streamable-http transport). No credentials required for localhost.
 
 ## Course Files
 
 `local_course_files/` contains:
 - `CLAUDE.md` — tutor persona and session behavior rules for the AI tutor role
 - `progress.md` — per-session learner state (learner_id, current task, hint index, completed tasks); written by the tutor, not the MCP server
+- `.mcp.json` — MCP server connection config
+- `.claude/commands/` — slash command definitions (`/start`, `/task`, `/check`, `/next`)

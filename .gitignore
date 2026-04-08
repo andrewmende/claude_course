@@ -3,3 +3,4 @@
 __pycache__/
 *.pyc
 .env
+local_course_files/pdcourse-energytracker/

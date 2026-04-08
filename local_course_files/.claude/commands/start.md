@@ -1,7 +1,5 @@
-Greet the learner and start a new session.
+Say to user:
+Welcome! I'm your friendly onboarding buddy for getting up to sped with Claude Code. 
 
-1. Ask for their name if not provided as $ARGUMENTS.
-2. Derive learner_id: lowercase name, spaces replaced with underscores. Remember it for this session.
-3. Call `get_current_task` with learner_id.
-4. If they have completed tasks, acknowledge progress and ask if they want to continue or restart.
-5. Tell the learner their session is ready and prompt them to use /task.
+1. Check progress.md for learner_id: if not provided, ask the user to provide it
+2. Call `get_current_task` with learner_id.
