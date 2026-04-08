@@ -33,17 +33,5 @@
         ]
       }
     ]
-  },
-  "mcpServers": {
-    "lms": {
-      "command": "../fastapi_mcp/.venv/bin/python3",
-      "args": [
-        "../fastapi_mcp/server.py"
-      ],
-      "env": {
-        "LMS_API_URL": "http://localhost:8000",
-        "LMS_TOKEN": ""
-      }
-    }
   }
 }
