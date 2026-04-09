@@ -1,11 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Read(../../../Library/Logs/Claude/**)",
-      "Read(../../../.claude/**)",
       "mcp__lms__get_lesson",
       "mcp__lms__submit_answer",
       "mcp__lms__get_current_task",
+      "Bash(git:*)",
       "Bash(git clone:*)",
       "Bash(curl:*)",
       "Bash(python3:*)",
@@ -14,8 +13,7 @@
       "Edit(progress.md)",
       "Write(**)",
       "Write(progress.md)",
-      "ToolSearch(*)",
-      "Bash(git:*)"
+      "ToolSearch(*)"
     ]
   },
   "enableAllProjectMcpServers": true,
