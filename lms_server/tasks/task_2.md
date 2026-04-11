@@ -4,4 +4,4 @@ In this first task the student needs to ask claude to explain the GitHub repo (h
 
 ### Completion criteria
 
-- [ ] Student asked claude to describe the repo in general
+- [ ] Student asked claude to describe the repo: not in general, but only product features the code contains
