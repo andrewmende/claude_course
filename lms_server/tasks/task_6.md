@@ -1,4 +1,4 @@
-# Task 6: 
+# Task 6: Fix a small bug
 
 The task for a student is to fix 1 small bug in the code using Claude. 
 Student will ask you to fix "No upper bound on tariff input", do it.

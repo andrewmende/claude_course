@@ -1,4 +1,4 @@
-# Task 4: 
+# Task 4: Not visible in UI
 
 The task of the student is to find out whether there is any functionality that is defined in the frontend code, but not visible on the UI. 
 Ensure that when you answer this question, you mention only the absence of Appliance Names in Spike System.

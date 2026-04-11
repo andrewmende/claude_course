@@ -2,19 +2,33 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## LMS Server (external)
+## LMS Server
 
-The MCP server lives at `/Users/amende/PycharmProjects/lms_server/` — it is a separate project, not part of this repo.
-
-Start it before opening a course session:
+The server lives at `lms_server/`. Start it before opening a course session or using the chat UI:
 
 ```bash
-cd /Users/amende/PycharmProjects/lms_server
-pip install -r requirements.txt
-python server.py
+cd lms_server
+pip3 install -r requirements.txt
+python3 server.py
 ```
 
-It runs on `http://localhost:8000`. Claude connects via streamable-http at `/mcp`; REST endpoints are at `/api/*`.
+It runs on `http://localhost:8000`.
+- Claude Code connects via streamable-http at `/mcp`
+- The chat UI connects via WebSocket at `ws://localhost:8000/ws/{learner_id}`
+
+## Chat UI
+
+A browser-based AI tutor chat lives at `chat_ui/`. Start it in a second terminal:
+
+```bash
+cd chat_ui
+npm install       # first time only
+npm run dev
+```
+
+Open `http://localhost:5173`, enter a learner ID, and start chatting.
+
+> The server must be running first — the UI connects to it on load.
 
 ## MCP connection
 
